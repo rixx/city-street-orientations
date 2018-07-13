@@ -103,7 +103,7 @@ def get_filename(default='images/street-orientation', extension='png'):
     counter = 0
     while os.path.exists(path):
         counter += 1
-        path = os.path.join('{default}-{counter}.{extension}')
+        path = os.path.join(f'{default}-{counter}.{extension}')
     return path
 
 
