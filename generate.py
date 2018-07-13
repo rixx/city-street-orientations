@@ -1,3 +1,5 @@
+import os
+
 import matplotlib.pyplot as plt
 import numpy as np
 import osmnx as ox
@@ -110,6 +112,15 @@ def get_bearing(place):
         ])
 
 
+def get_filename(default='images/street-orientation', extension='png'):
+    path = f'{default}.{extension}'
+    counter = 0
+    while os.path.exists(path):
+        counter += 1
+        path = os.path.join('{default}-{counter}.{extension}')
+    return path
+
+
 if __name__ == '__main__':
     gdf = ox.gdf_from_places(places.values())
     bearings = {
@@ -142,5 +153,5 @@ if __name__ == '__main__':
     fig.suptitle('City Street Network Orientation', **supertitle_font)
     fig.tight_layout()
     fig.subplots_adjust(hspace=0.35)
-    plt.gcf().savefig('images/street-orientations.png', dpi=120, bbox_inches='tight')
+    plt.gcf().savefig(get_filename(), dpi=120, bbox_inches='tight')
     plt.close()
