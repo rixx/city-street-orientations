@@ -1,4 +1,6 @@
+import json
 import os
+import sys
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -16,22 +18,6 @@ ytick_font = {'size': 9, 'alpha': 0.2, **font, **tick_font}
 
 ox.config(log_console=True, use_cache=True)
 weight_by_length = False
-
-places = {
-    'Augsburg': 'Augsburg, Germany',
-    'Berlin': {'state': 'Berlin', 'country': 'Germany'},
-    'Bielefeld': 'Bielefeld, Germany',
-    'Bochum': 'Bochum, Germany',
-    'Bremen': 'Bremen, Germany',
-    'Essen': 'Essen, Germany',
-    'Gelsenkirchen': 'Gelsenkirchen, Germany',
-    'Hannover': 'Hannover, Germany',
-    'Karlsruhe': 'Karlsruhe, Germany',
-    'Köln': 'Cologne, Germany',
-    'München': 'München, Germany',
-    'Münster': 'Münster, Germany',
-    'Nürnberg': 'Nürnberg, Germany',
-}
 
 
 def polar_plot(ax, bearings, slices=36, title=''):
@@ -121,8 +107,24 @@ def get_filename(default='images/street-orientation', extension='png'):
     return path
 
 
+def load_places():
+    try:
+        with open(sys.argv[-1], 'r') as source:
+            result = json.load(source)
+    except Exception:
+        print(f'Tried and failed to open file at {sys.argv[-1]}. '
+              'Please pass a json file with city data to this program.')
+        sys.exit(-1)
+    return result
+
+
 if __name__ == '__main__':
-    gdf = ox.gdf_from_places(places.values())
+    places = load_places()
+    try:
+        gdf = ox.gdf_from_places(places.values())
+    except Exception as e:
+        print(f'Failed to load city data: {e}')
+
     bearings = {
         place: get_bearing(place)
         for place in sorted(places.keys())
@@ -147,7 +149,11 @@ if __name__ == '__main__':
     # plot each city's polar histogram
     for ax, place in zip(axes, sorted(places.keys())):
         if place in bearings:
-            polar_plot(ax, bearings[place], title=place)
+            try:
+                polar_plot(ax, bearings[place], title=place)
+            except Exception as e:
+                print(f'Failed to build polar plot for {place}: {e}')
+                continue
 
     # Add super title and save full image
     fig.suptitle('City Street Network Orientation', **supertitle_font)
