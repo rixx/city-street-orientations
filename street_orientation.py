@@ -1,5 +1,6 @@
 import json
 import os
+import subprocess
 import sys
 
 import matplotlib.pyplot as plt
@@ -160,12 +161,31 @@ def print_list():
                 print(f'Failed to build polar plot for {place}: {e}')
                 continue
 
-    # Add super title and save full image
-    fig.suptitle('City Street Network Orientation', **supertitle_font)
-    fig.tight_layout()
-    fig.subplots_adjust(hspace=0.35)
-    plt.gcf().savefig(get_filename(), dpi=120, bbox_inches='tight')
-    plt.close()
+
+def print_single():
+    places = load_places()
+    bearings = get_bearings(places)
+
+    for place in places:
+        # create figure and axes
+        graph, bearing = bearings[place]
+        axes = plt.subplot(projection='polar')
+        try:
+            polar_plot(axes, bearing, title=place)
+            polar_path = get_filename(f'images/{place}_polar')
+            plt.gcf().savefig(polar_path, dpi=120, bbox_inches='tight')
+            plt.close()
+        except Exception as e:
+            print(f'Failed to build polar plot for {place}: {e}')
+            continue
+        fig, axes = ox.plot_graph(graph, fig_height=12, node_size=0, edge_linewidth=0.8, show=False)
+        map_path = get_filename(f'images/{place}_map')
+        fig.savefig(map_path, show=False)
+
+        goal_path = get_filename(f'images/{place}')
+        subprocess.call(f'composite {polar_path} {map_path} -gravity SouthEast -blend 100 {goal_path}', shell=True)
+        os.remove(polar_path)
+        os.remove(map_path)
 
 
 def check_places():
@@ -210,6 +230,8 @@ def print_help():
     print('                           regions, not points.')
     print('  list data/cities.json    Generate a file in images/ containing charts for all,')
     print('                           cities in data/cities.json')
+    print('  single data/cities.json  Generate files in images/ for all, cities in')
+    print('                           data/cities.json')
 
 
 if __name__ == '__main__':
@@ -222,6 +244,11 @@ if __name__ == '__main__':
             print_list()
         except Exception as e:
             print(f'Error during list generation: {e}.')
+    elif mode == 'single':
+        try:
+            print_single()
+        except Exception as e:
+            print(f'Error during image generation: {e}.')
     elif mode == 'check':
         check_places()
     else:
