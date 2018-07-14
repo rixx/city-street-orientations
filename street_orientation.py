@@ -71,8 +71,7 @@ def count_and_merge(n, bearings):
     return np.array(count_merged)
 
 
-def get_bearing(place):
-    query = places[place]
+def get_bearing(place, query):
     try:
         graph = ox.graph_from_place(query, network_type='drive')
     except Exception:
@@ -90,10 +89,10 @@ def get_bearing(place):
         city_bearings = []
         for street in streets:
             city_bearings.extend([street[0]] * street[1])
-        return pd.Series(city_bearings)
+        return graph, pd.Series(city_bearings)
     else:
         # don't weight bearings, just take one value per street segment
-        return pd.Series([
+        return graph, pd.Series([
             data['bearing']
             for u, v, k, data in graph.edges(keys=True, data=True)
         ])
@@ -119,23 +118,26 @@ def load_places():
     return result
 
 
-def print_list():
-    places = load_places()
+def get_bearings(places):
     try:
         gdf = ox.gdf_from_places(places.values())
     except Exception as e:
         print(f'Failed to load city data: {e}')
 
     bearings = {
-        place: get_bearing(place)
+        place: get_bearing(place, places[place])
         for place in sorted(places.keys())
     }
-    bearings = {
+    return {
         key: value
         for key, value in bearings.items()
         if value is not None
     }
 
+
+def print_list():
+    places = load_places()
+    bearings = get_bearings(places)
     # create figure and axes
     n = len(places)
     ncols = int(np.ceil(np.sqrt(n)))
@@ -151,7 +153,9 @@ def print_list():
     for ax, place in zip(axes, sorted(places.keys())):
         if place in bearings:
             try:
-                polar_plot(ax, bearings[place], title=place)
+                polar_plot(ax, bearings[place][1], title=place)
+                plt.gcf().savefig(get_filename(default=f'images/{place}'), dpi=120, bbox_inches='tight')
+                plt.close()
             except Exception as e:
                 print(f'Failed to build polar plot for {place}: {e}')
                 continue
