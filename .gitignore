@@ -1,3 +1,5 @@
 cache/
 images/
 data/
+__pycache__/
+*.pyc
