@@ -118,7 +118,7 @@ def load_places():
     return result
 
 
-if __name__ == '__main__':
+def print_list():
     places = load_places()
     try:
         gdf = ox.gdf_from_places(places.values())
@@ -161,3 +161,27 @@ if __name__ == '__main__':
     fig.subplots_adjust(hspace=0.35)
     plt.gcf().savefig(get_filename(), dpi=120, bbox_inches='tight')
     plt.close()
+
+
+def print_help():
+    print('Usage: street_orientation.py MODE FILE')
+    print('Generates radial histogram plots from the direction of a region\'s streets.')
+    print('\nThe MODE argument must be "check", "list" or "single".\n')
+    print('  check data/cities.json   Checks that all data points in data/cities.json are')
+    print('                           regions, not points.')
+    print('  list data/cities.json    Generate a file in images/ containing charts for all,')
+    print('                           cities in data/cities.json')
+
+
+if __name__ == '__main__':
+    if len(sys.argv) == 1:
+        print_help()
+        sys.exit(-1)
+    elif sys.argv[1] == 'list':
+        try:
+            print_list()
+        except Exception as e:
+            print(f'Error during list generation: {e}.')
+    else:
+        print_help()
+        sys.exit(-1)

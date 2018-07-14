@@ -15,7 +15,7 @@ not just points on the map::
 
 If this script doesn't print anything, you're good, and can run::
 
-    python generate_orientation_table.py data/my_cities.json
+    python street_orientation.py list data/my_cities.json
 
 Depending on the amount of cities you chose, and their size, and the computer
 you're running this on, expect it to take about five to fifteen minutes. The
