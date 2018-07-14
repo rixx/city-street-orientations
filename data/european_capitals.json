@@ -1,0 +1,31 @@
+{
+    "Moscow": {"county": "Moscow", "city": "Moscow"},
+    "London": {"county": "London"},
+    "Berlin": {"state": "Berlin", "country": "Germany"},
+    "Madrid": {"city": "Madrid"},
+    "Kiev": {"state": "Kiev"},
+
+    "Rome": {"city": "Rome", "country": "Italy"},
+    "Paris": {"city": "Paris"},
+    "Bucharest": {"state": "Bucharest"},
+    "Minsk": {"state": "Minsk"},
+    "Wien": {"state": "Wien", "country": "Austria"},
+
+    "Budapest": {"city": "Budapest"},
+    "Warsaw": {"city": "Warsaw"},
+    "Sofia": {"county": "Sofia", "country": "Bulgaria"},
+    "Prague": {"city": "Prague"},
+    "Brussels": {"state": "Prague"},
+
+    "Tbilisi": {"city": "Tbilisi"},
+    "Stockholm": {"state": "Stockholm"},
+    "Amsterdam": {"city": "Amsterdam"},
+    "Zagreb": {"city": "Zagreb"},
+    "Riga": {"county": "Riga"},
+
+    "Athens": {"county": "Athens", "country": "Greece"},
+    "Helsinki": {"city": "Helsinki"},
+    "Vilnius": {"city": "Vilnius"},
+    "Dublin": {"city": "Dublin"},
+    "Lisbon": {"county": "Lisbon"}
+}
