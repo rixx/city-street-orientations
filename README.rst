@@ -11,7 +11,7 @@ You can have as many cities in there as you wish, but it should be at least
 three. Next, check that the cities you entered all refer to valid regions, and
 not just points on the map::
 
-    python check_place.py data/my_cities.json
+    python street_orientation.py check data/my_cities.json
 
 If this script doesn't print anything, you're good, and can run::
 
@@ -20,6 +20,11 @@ If this script doesn't print anything, you're good, and can run::
 Depending on the amount of cities you chose, and their size, and the computer
 you're running this on, expect it to take about five to fifteen minutes. The
 script prints a lot of debug output, so you'll know it's still working.
+
+If you want an image with the radial histogram of one city with the map of the
+city, run this instead::
+
+    python street_orientation.py single data/my_cities.json
 
 .. _osmnx example: https://github.com/gboeing/osmnx-examples/blob/master/notebooks/17-street-network-orientations.ipynb
 .. _accompanying blogpost: http://geoffboeing.com/2018/07/comparing-city-street-orientations/
