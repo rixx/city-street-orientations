@@ -96,6 +96,7 @@ def get_bearing(place, query):
         return graph, pd.Series([
             data['bearing']
             for u, v, k, data in graph.edges(keys=True, data=True)
+            if data['bearing'] != 0.0
         ])
 
 
