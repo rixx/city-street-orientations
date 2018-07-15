@@ -156,11 +156,11 @@ def print_list():
         if place in bearings:
             try:
                 polar_plot(ax, bearings[place][1], title=place)
-                plt.gcf().savefig(get_filename(default=f'images/{place}'), dpi=120, bbox_inches='tight')
-                plt.close()
             except Exception as e:
                 print(f'Failed to build polar plot for {place}: {e}')
                 continue
+    plt.gcf().savefig(get_filename(default=f'images/street_orientation'), dpi=120, bbox_inches='tight')
+    plt.close()
 
 
 def print_single():
