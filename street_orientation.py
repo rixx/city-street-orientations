@@ -142,6 +142,9 @@ def print_list():
     bearings = get_bearings(places)
     # create figure and axes
     n = len(places)
+    if n < 2:
+        print('Please use the "list" mode only if you have two or more cities to display!')
+        sys.exit(-1)
     ncols = int(np.ceil(np.sqrt(n)))
     nrows = int(np.ceil(n / ncols))
     figsize = (ncols * 5, nrows * 5)
