@@ -8,7 +8,7 @@
     "Stuttgart": {"county": "Stuttgart", "country": "Germany"},
     "Düsseldorf": {"county": "Düsseldorf", "country": "Germany"},
     "Dortmund": {"county": "Dortmund", "country": "Germany"},
-    "Essen": "Essen, Germany",
+    "Essen": {"county": "Essen"},
     "Leipzig": {"county": "Leipzig"},
     "Bremen": "Bremen, Germany",
     "Dresden": {"county": "Dresden"},

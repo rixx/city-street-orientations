@@ -12,13 +12,13 @@
     "Wien": {"state": "Wien", "country": "Austria"},
 
     "Budapest": {"city": "Budapest"},
-    "Warsaw": {"city": "Warsaw"},
-    "Sofia": {"county": "Sofia", "country": "Bulgaria"},
+    "Warsaw": {"city": "Warszava"},
+    "Sofia": "sofia Sv. Sv. Kiril i Metodiy",
     "Prague": {"city": "Prague"},
-    "Brussels": {"state": "Prague"},
+    "Brussels": "bruxelles belgium",
 
     "Tbilisi": {"city": "Tbilisi"},
-    "Stockholm": {"state": "Stockholm"},
+    "Stockholm": {"city": "Stockholm", "exclude_place_ids": "123782"},
     "Amsterdam": {"city": "Amsterdam"},
     "Zagreb": {"city": "Zagreb"},
     "Riga": {"county": "Riga"},
@@ -27,5 +27,5 @@
     "Helsinki": {"city": "Helsinki"},
     "Vilnius": {"city": "Vilnius"},
     "Dublin": {"city": "Dublin"},
-    "Lisbon": {"county": "Lisbon"}
+    "Lisbon": {"county": "Grande Lisbon"}
 }
