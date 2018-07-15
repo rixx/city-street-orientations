@@ -111,7 +111,7 @@ def get_filename(default='images/street-orientation', extension='png'):
 
 def load_places():
     try:
-        with open(sys.argv[-1], 'r') as source:
+        with open(sys.argv[-1], 'r', encoding='utf-8') as source:
             result = json.load(source)
     except Exception:
         print(f'Tried and failed to open file at {sys.argv[-1]}. '
