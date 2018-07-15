@@ -2,8 +2,9 @@ German city street network orientations
 ---------------------------------------
 
 Based on an `osmnx example`_ and the `accompanying blogpost`_, I'm playing
-around with German and European cities. If the results look pretty, there will
-be a blog post of my own.
+around with German and European cities. I also released a `blog post`_ of my
+own, and posted some on-demand images on `mastodon`_, including one image for
+all of Denmark.
 
 If you want to use this: Install the requirements named in
 ``requirements.txt``, then take a look at the data files and build your own.
@@ -28,3 +29,5 @@ city, run this instead::
 
 .. _osmnx example: https://github.com/gboeing/osmnx-examples/blob/master/notebooks/17-street-network-orientations.ipynb
 .. _accompanying blogpost: http://geoffboeing.com/2018/07/comparing-city-street-orientations/
+.. _blog post: https://rixx.de/blog/street-orientantions/
+.. _mastodon: https://chaos.social/@rixx/100374777261107270
