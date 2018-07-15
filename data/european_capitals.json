@@ -12,10 +12,10 @@
     "Wien": {"state": "Wien", "country": "Austria"},
 
     "Budapest": {"city": "Budapest"},
-    "Warsaw": {"city": "Warszava"},
+    "Warsaw": {"city": "Warszawa"},
     "Sofia": "sofia Sv. Sv. Kiril i Metodiy",
     "Prague": {"city": "Prague"},
-    "Brussels": "bruxelles belgium",
+    "Brussels": "Brussels, Ville de Bruxelles - Stad Brussel, Brussels-Capital, Belgium",
 
     "Tbilisi": {"city": "Tbilisi"},
     "Stockholm": {"city": "Stockholm", "exclude_place_ids": "123782"},
@@ -27,5 +27,5 @@
     "Helsinki": {"city": "Helsinki"},
     "Vilnius": {"city": "Vilnius"},
     "Dublin": {"city": "Dublin"},
-    "Lisbon": {"county": "Grande Lisbon"}
+    "Lisbon": {"county": "Grande Lisboa"}
 }
