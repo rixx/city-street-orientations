@@ -1,5 +1,5 @@
-German city street network orientations
----------------------------------------
+City street orientation maps
+----------------------------
 
 Based on an `osmnx example`_ and the `accompanying blogpost`_, I'm playing
 around with German and European cities. I also released a `blog post`_ of my
