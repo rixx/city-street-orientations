@@ -2,6 +2,7 @@ import json
 import os
 import subprocess
 import sys
+from contextlib import suppress
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -187,9 +188,10 @@ def print_single():
         fig.savefig(map_path, show=False)
 
         goal_path = get_filename(f'images/{place}')
-        subprocess.call(f'composite {polar_path} {map_path} -gravity SouthEast -blend 100 {goal_path}', shell=True)
-        os.remove(polar_path)
-        os.remove(map_path)
+        with suppress(Exception):
+            subprocess.call(f'composite {polar_path} {map_path} -gravity SouthEast -blend 100 {goal_path}', shell=True)
+            os.remove(polar_path)
+            os.remove(map_path)
 
 
 def check_places():
