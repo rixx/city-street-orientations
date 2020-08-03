@@ -1,6 +1,9 @@
 City street orientation maps
 ----------------------------
 
+.. image:: https://raw.githubusercontent.com/rixx/city-street-orientations/master/vienna.png
+   :target: https://rixx.de/blog/street-orientantions/
+
 Based on an `osmnx example`_ and the `accompanying blogpost`_, I'm playing
 around with German and European cities. I also released a `blog post`_ of my
 own, and posted some on-demand images on `mastodon`_, including one image for
